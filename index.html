@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Showcase</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Include Lucide icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <!-- Main container -->
+    <div class="min-h-screen bg-gray-950 p-8">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-wrap gap-8 justify-center items-center" id="socialMediaContainer">
+                <!-- Social cards will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Template for social card -->
+    <template id="socialCardTemplate">
+        <div class="social-card">
+            <div class="card-header">
+                <div class="icon-container">
+                    <i data-lucide="github"></i>
+                </div>
+                <div class="account-switcher">
+                    <button class="account-switch-button">
+                        <span class="platform-text"></span>
+                        <i data-lucide="chevron-right"></i>
+                    </button>
+                    <div class="account-menu hidden">
+                        <!-- Account options will be dynamically inserted here -->
+                    </div>
+                </div>
+            </div>
+            <div class="card-content">
+                <h3 class="username"></h3>
+                <p class="bio"></p>
+                <div class="action-buttons">
+                    <a class="profile-link" target="_blank" rel="noopener noreferrer">
+                        View Profile
+                        <i data-lucide="external-link"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="ambient-light"></div>
+        </div>
+    </template>
+
+    <script src="script.js"></script>
+</body>
+</html>

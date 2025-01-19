@@ -1,0 +1,417 @@
+/* Reset and Base Styles */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --gray-950: #030712;
+    --gray-900: #111827;
+    --gray-800: #1f2937;
+    --gray-700: #374151;
+    --gray-600: #4b5563;
+    --gray-400: #9ca3af;
+    --white: #ffffff;
+    --card-width: 24rem;
+    --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--gray-950);
+    color: var(--white);
+    overflow-x: hidden;
+}
+
+/* Layout */
+.min-h-screen {
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+.max-w-6xl {
+    max-width: 72rem;
+    margin: 0 auto;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.gap-8 {
+    gap: 2rem;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.items-center {
+    align-items: center;
+}
+
+/* Card Container */
+#socialMediaContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem;
+    perspective: 1000px;
+}
+
+/* Social Card Base */
+.social-card {
+    position: relative;
+    width: var(--card-width);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    background-color: var(--gray-900);
+    border: 1px solid var(--gray-800);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(16px);
+    transition: transform var(--transition-smooth),
+                box-shadow var(--transition-smooth),
+                background var(--transition-smooth),
+                opacity 0.3s ease;
+    transform-style: preserve-3d;
+    overflow: hidden;
+    will-change: transform, background, opacity;
+}
+
+/* Card Hover Effects */
+.social-card:hover {
+    transform: scale(1.02) translateY(-8px);
+    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* Card Header */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+/* Icon Container */
+.icon-container {
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+    will-change: transform;
+}
+
+.social-card:hover .icon-container {
+    transform: scale(1.1);
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Account Switcher */
+.account-switcher {
+    position: relative;
+    z-index: 3;
+}
+
+.account-switch-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 0.875rem;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.account-switch-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Account Menu */
+.account-menu {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 0.5rem);
+    background-color: var(--gray-800);
+    border: 1px solid var(--gray-700);
+    border-radius: 0.75rem;
+    width: 12rem;
+    padding: 0.5rem 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+.account-menu.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Account Options */
+.account-option {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: none;
+    border: none;
+    color: var(--gray-400);
+    text-align: left;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.account-option:hover {
+    color: var(--white);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.account-option.active {
+    color: var(--white);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Profile Content */
+.username {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    transition: opacity 0.3s ease;
+}
+
+.bio {
+    color: var(--gray-400);
+    font-size: 0.875rem;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+    transition: opacity 0.3s ease;
+}
+
+/* Profile Link */
+.profile-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--white);
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.profile-link:hover {
+    transform: translateY(-2px);
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Ripple Effect */
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    animation: ripple 0.6s linear;
+    background-color: rgba(255, 255, 255, 0.3);
+    pointer-events: none;
+}
+
+/* Ambient Light */
+.ambient-light {
+    position: absolute;
+    inset: 0;
+    border-radius: 1rem;
+    opacity: 0.1;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    z-index: 1;
+}
+
+.social-card:hover .ambient-light {
+    opacity: 0.2;
+}
+
+/* Loading Animation */
+.loading {
+    animation: slideIn 0.5s ease-out forwards;
+}
+
+/* Timestamp */
+.timestamp {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    font-size: 0.75rem;
+    color: var(--gray-600);
+    pointer-events: none;
+    z-index: 100;
+}
+
+/* Floating Cursor */
+.floating-cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s;
+    z-index: 9999;
+    mix-blend-mode: difference;
+}
+
+/* Animations */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+@keyframes wobble {
+    0%, 100% { transform: scale(1); }
+    25% { transform: scale(1.1) rotate(3deg); }
+    50% { transform: scale(1.1) rotate(-3deg); }
+    75% { transform: scale(1.1) rotate(3deg); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* Platform-specific colors */
+.social-card[data-platform="github"] { --platform-color: 147, 51, 234; }
+.social-card[data-platform="instagram"] { --platform-color: 225, 48, 108; }
+.social-card[data-platform="youtube"] { --platform-color: 255, 0, 0; }
+.social-card[data-platform="linkedin"] { --platform-color: 10, 102, 194; }
+.social-card[data-platform="pinterest"] { --platform-color: 230, 0, 35; }
+.social-card[data-platform="facebook"] { --platform-color: 66, 103, 178; }
+
+/* Hover Effects Enhancement */
+.social-card::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(45deg, 
+        rgba(var(--platform-color), 0.5),
+        transparent,
+        rgba(var(--platform-color), 0.5)
+    );
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.social-card:hover::before {
+    opacity: 1;
+}
+
+/* Media Queries */
+@media (max-width: 640px) {
+    :root {
+        --card-width: 100%;
+    }
+
+    .social-card {
+        margin: 1rem;
+    }
+
+    .min-h-screen {
+        padding: 1rem;
+    }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+    :root {
+        --card-width: 20rem;
+    }
+}
+
+/* Accessibility Improvements */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Print Styles */
+@media print {
+    .social-card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        background: white !important;
+        color: black !important;
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+    }
+
+    .ambient-light,
+    .floating-cursor,
+    .ripple {
+        display: none !important;
+    }
+}
+.platform-name {
+    position: absolute;
+    top: 0.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gray-400);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
